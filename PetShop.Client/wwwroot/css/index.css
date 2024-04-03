@@ -1,0 +1,68 @@
+﻿h1 {
+    text-align: center;
+}
+
+caption{
+    font-weight: bold;
+}
+
+img {
+    max-width: 250px;
+    max-height: 250px; 
+}
+
+.spceMarg {
+    border: 8px solid #C2DBFE;
+    padding: 10px;
+    margin: 20px;
+    /* text-align: center;*/
+    /* width: 35em;*/
+}
+
+textarea.noResize {
+    resize: none;
+}
+
+table {
+    text-align: center;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.largeButton {
+    border: none;
+    background-color: gainsboro;
+    width: 100%;
+    font-weight: bold;
+}
+
+.labelFormB {
+    font-weight: bold;
+}
+
+#toMiddel {
+    display: block;
+    text-align: center;
+}
+
+.marBtngds {
+    margin: 0.3em;
+}
+
+.hiddAndZero {
+    visibility: hidden;
+    width: 0px;
+}
+
+.validSpanForm {
+    margin: 1em;
+    color: red;
+    font-weight: bold
+}
+/*
+style="margin:1px 1em;padding:0px 10px;"*/
+
+/*Background*/
+

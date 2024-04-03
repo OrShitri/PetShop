@@ -1,0 +1,89 @@
+﻿@model PetShop.Models.Animal
+@{
+    ViewBag.Title = "Edit Animal";
+}
+
+<h1>Edit Animal</h1>
+
+<table class="table table-striped table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.PictureName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Name)
+        </th>
+         <th>
+            @Html.DisplayNameFor(m => m.Age)
+        </th>
+         <th>
+            @Html.DisplayNameFor(m => m.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.CategoryId)
+        </th>
+    </tr>
+        <tr>
+            <td><img src="~/images/@Model.PictureName" alt="@Model.Name"/></td>
+            <td>@Model.Name</td>
+            <td>@Model.Age</td>
+            <td>@Model.Description</td>
+            <td>@ViewBag.CategoryName.Name</td>
+        </tr>
+</table>
+
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="UpdateAnimal" method="post" class="spceMarg form-control" enctype="multipart/form-data" >
+
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Category</label>
+            <div class="col-sm-10">
+                <select for="categories" asp-for="CategoryId" class="form-control">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.CategoryId">@category.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br /><br />
+
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Name</label>
+            <div class="col-sm-10">
+                <input type="text" value="@Model.Name" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="validSpanForm"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Age</label>
+            <div class="col-sm-10">
+                <input type="number" value="@Model.Age" asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="validSpanForm"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label labelFormB">Description</label>
+            <div class="col-sm-10">
+                <textarea rows="4" cols="50" asp-for="Description" class="form-control noResize" id="description">@Model.Description</textarea>
+            </div>
+        </div>
+        <br />
+    
+        <div style="display:block;text-align:center">
+            <label for="files" class="btn btn-dark">Select Image</label>
+            <input id="files" type="file" class="hiddAndZero" name="imageFile" accept=".jpg, .jpeg, .png, .gif" />
+            <input type="hidden" name="PictureName" value="@Model.PictureName">
+        </div>
+        <br />
+
+        <input type="hidden" name="AnimalId" value="@Model.AnimalId">
+        <button type="submit" class="btn btn-outline-secondary largeButton">Save</button>
+
+    </form>
+</div>

@@ -1,0 +1,13 @@
+﻿@model PetShop.Models.Comment
+
+<div class="container">
+    <form asp-action="AddComment" asp-controller="Catalog" class="spceMarg" method="post">
+        <div id="toMiddel">
+            <label class="labelFormB">Add Your Comment:</label>
+            <input asp-for="Comments" required>
+            <input type="hidden" asp-for="AnimalId" >
+            <input type="submit" value="Add Comment" class="btn btn-success">
+            <span asp-validation-for="Comments" style="margin:1em;color:red;font-weight:bold"></span>
+        </div>
+    </form>
+</div>

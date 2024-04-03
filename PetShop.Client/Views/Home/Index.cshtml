@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PetShop.Models.Filters.HighestRatedAnimals>
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container">
+    <table class="table table-striped table-dark">
+        <caption>Two most highly rated pets today</caption>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Animal!.PictureName) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Animal!.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Animal!.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Animal!.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.RatingCount)
+            </th>
+        </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td><img src="~/images/@animal.Animal!.PictureName" alt="@animal.Animal!.Name"/></td>
+                <td>@animal.Animal!.Name</td>
+                <td>@animal.Animal!.Age</td>
+                <td>@animal.Animal!.Description</td>
+                <td>@animal.RatingCount</td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+

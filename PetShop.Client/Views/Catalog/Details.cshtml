@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@using PetShop.Models
+@model Animal
+@{
+    ViewBag.Title = "Details";
+}
+
+<table class="table table-striped table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.PictureName) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Name)
+        </th>
+         <th>
+            @Html.DisplayNameFor(m => m.Age)
+        </th>
+         <th>
+            @Html.DisplayNameFor(m => m.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.CategoryId)
+        </th>
+    </tr>
+        <tr>
+            <td><img src="~/images/@Model.PictureName" alt="@Model.Name"/></td>
+            <td>@Model.Name</td>
+            <td>@Model.Age</td>
+            <td id="testText1" class="textWrite1" style="width:100%;text-align:left">@Model.Description</td>
+            <td>@ViewBag.CategoryName.Name</td>
+        </tr>
+</table>
+<div class="container">
+    <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>
+                Comments
+            </th>
+            @if (ViewBag.Page == "Admin" && SignInManager.IsSignedIn(User))
+            {
+                <th>Edit/Remove</th>
+            }
+        </tr>
+            @foreach(var comment in ViewBag.Comments) 
+            { 
+                <tr>
+                <td>@comment.Comments</td>
+                @if (ViewBag.Page == "Admin" && SignInManager.IsSignedIn(User))
+                    {
+                        <form asp-controller="Admin" asp-action="EditComment" method="post">
+                            <td style="width:22em">
+                                <input type="text" value="@comment.Comments" name="comment" minlength="4" required />
+                                <input type="hidden" value="@comment.CommentId" name="id" />
+                                <button type="submit" class="btn btn-warning">Edit</button>
+                                <a asp-controller="Admin" asp-action="RemoveComment" asp-route-id="@comment.CommentId" onclick="commentRemoved()" class="btn btn-danger">Remove</a>
+                            </td>
+                        </form>
+                    }
+                </tr>
+            }
+    </table>
+</div>
+
+@if (ViewBag.Page != "Admin" || !SignInManager.IsSignedIn(User))
+{
+    <partial name="AddCommentForm" model="@(new Comment{AnimalId = Model.AnimalId})"/>
+}

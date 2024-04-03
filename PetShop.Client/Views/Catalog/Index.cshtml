@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@model IEnumerable<PetShop.Models.Animal>
+@{
+    @if (ViewBag.Page == "Admin" && SignInManager.IsSignedIn(User))
+        ViewBag.Title = "Administrator";
+    else
+        ViewBag.Title = "Catalog";
+}
+
+<form asp-action="ShowCategoty" asp-controller="Catalog" class="spceMarg" method="post">
+    <div style="display:flex;justify-content:space-between">
+        <div>   
+            <label for="categories" class="labelFormB">Select a Category:</label>
+            <select for="categories" name="categoryId">
+                <option selected>--All Categories--</option>
+                @foreach(var category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryId">@category.Name</option>
+                }
+            </select>
+
+            <input type="hidden" name="page" value="@ViewBag.Page">
+            <button type="submit" class="btn btn-outline-dark"><i class="fa fa-search"></i> Filter</button>
+        </div>
+
+        <span>
+        @if (ViewBag.Page == "Admin" && SignInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Admin" asp-action="AddAnimal" class="btn btn-outline-dark">New Animal</a>
+        }
+        </span>
+    </div>
+</form>
+
+
+<table class="table table-striped table-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.PictureName) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Description)
+        </th>
+        <th>
+            More Info
+        </th>
+    </tr>
+    @foreach (var animal in Model)
+    {
+        <tr>
+            <td><img src="~/images/@animal.PictureName" alt="@animal.Name"/></td>
+            <td>@animal.Name</td>
+            <td>@animal.Age</td>
+            <td>@animal.Description</td>
+            <td>
+                <a asp-controller="Catalog" asp-action="Details" asp-route-id="@animal.AnimalId" asp-route-page="@ViewBag.Page" class="btn btn-info marBtngds">Details</a>
+                @if (ViewBag.Page == "Admin" && SignInManager.IsSignedIn(User))
+                {
+                    <br/>
+                    <a asp-controller="Admin" asp-action="EditAnimal" asp-route-id="@animal.AnimalId" class="btn btn-warning marBtngds">Edit</a>
+                    <br/>
+                    <a asp-controller="Admin" asp-action="DeleteAnimal" asp-route-id="@animal.AnimalId" class="btn btn-danger marBtngds">Delete</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

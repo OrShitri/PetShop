@@ -1,0 +1,61 @@
+﻿@model PetShop.Models.Animal
+@{
+    ViewBag.Title = "New Animal";
+}
+
+<h1>Add New Animal</h1>
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="InsertAnimal" method="post" class="spceMarg form-control" enctype = "multipart/form-data">
+        
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Category</label>
+            <div class="col-sm-10">
+                <select for="categories" asp-for="CategoryId" class="form-control">
+                    <option selected>Select a Categoty</option>
+                    @foreach(var category in ViewBag.Categories)
+                    {
+                        <option value="@category.CategoryId">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="validSpanForm"></span>
+            </div>
+        </div>
+        <br /><br />
+    
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Name</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="Enter the name of the animal" asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="validSpanForm"></span>
+            </div>
+        </div>
+        <br />
+    
+        <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label labelFormB">Age</label>
+            <div class="col-sm-10">
+                <input type="number" placeholder="Enter the age of the animal" asp-for="Age" class="form-control"/>
+                <span asp-validation-for="Age" class="validSpanForm"></span>
+            </div>
+        </div>
+        <br />
+    
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label labelFormB">Description</label>
+            <div class="col-sm-10">
+                <textarea rows="4" cols="50" placeholder="Your Description..." asp-for="Description" class="form-control noResize" id="description"></textarea>
+            </div>
+        </div>
+        <br />
+    
+        <div style="display:block;text-align:center">
+            <label for="files" class="btn btn-dark">Select Image</label>
+            <input id="files" type="file" class="hiddAndZero" name="imageFile" accept=".jpg, .jpeg, .png, .gif" />
+        </div>
+        <br />
+    
+        <button type="submit" class="btn btn-outline-secondary largeButton">Add Animall</button>
+    
+    </form>
+</div>
