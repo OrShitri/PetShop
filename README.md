@@ -32,11 +32,17 @@ The application manages another database called authentication, on which all the
 * Pull from here
 * Add a migration and update the local database (for the Authentication DB)
 * In the client project in the Program.cs file add the following lines of code under the line of code - "var app = builder.Build();" (line 38)
+  <br>
   //using (var scop = app.Services.CreateScope())
+  <br>
   //{
+  <br>
   //    var ctx = scop.ServiceProvider.GetRequiredService<MyContext>();
+  <br>
   //    ctx.Database.EnsureDeleted();
+  <br>
   //    ctx.Database.EnsureCreated();
+  <br>
   //}
 * Then when running the project, the local database (for the PetShop DB) will be created (code first), after the database is created, the above lines can be deleted
 
