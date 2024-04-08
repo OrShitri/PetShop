@@ -1,4 +1,4 @@
-<img align="center" alt="airport" height="200px" style="padding-right:10px;" src="https://marketplace.canva.com/EAFwPoYMnPg/1/0/1600w/canva-black-and-white-minimalist-modern-simple-pet-shop-logo-rJFBPjwo0ck.jpg" />  
+<img align="center" alt="airport" height="300px" width="800px" style="padding-right:10px;" src="https://marketplace.canva.com/EAFwPoYMnPg/1/0/1600w/canva-black-and-white-minimalist-modern-simple-pet-shop-logo-rJFBPjwo0ck.jpg" />  
 
 # Pet Shop
 PetShop is an Asp.Net Core MVC application of an online catalog for a pet shop.
