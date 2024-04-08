@@ -1,4 +1,4 @@
-<img align="center" alt="airport" width="700px" style="padding-right:10px;" src="https://marketplace.canva.com/EAFwPoYMnPg/1/0/1600w/canva-black-and-white-minimalist-modern-simple-pet-shop-logo-rJFBPjwo0ck.jpg" />  
+<img align="center" alt="airport" height="200px" style="padding-right:10px;" src="https://marketplace.canva.com/EAFwPoYMnPg/1/0/1600w/canva-black-and-white-minimalist-modern-simple-pet-shop-logo-rJFBPjwo0ck.jpg" />  
 
 # Pet Shop
 PetShop is an Asp.Net Core MVC application of an online catalog for a pet shop.
@@ -14,7 +14,7 @@ The application is divided into 4 separate projects (Client, Data, Models, Servi
 So each project is responsible for a different part.
 <br>
 
-##Data Base
+## Data Base
 <br>
 The application saves all the data of the animals, pictures, comments, categories, etc. in a database on SQL Server (MMSQL)
 <br>
