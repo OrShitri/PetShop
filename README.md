@@ -35,17 +35,17 @@ The application manages another database called authentication, on which all the
   <br>
   "var app = builder.Build();" (line 38):
   <br>
-  //using (var scop = app.Services.CreateScope())
+  using (var scop = app.Services.CreateScope())
   <br>
-  //{
+  {
   <br>
-  //    var ctx = scop.ServiceProvider.GetRequiredService<MyContext>();
+      var ctx = scop.ServiceProvider.GetRequiredService<MyContext>();
   <br>
-  //    ctx.Database.EnsureDeleted();
+      ctx.Database.EnsureDeleted();
   <br>
-  //    ctx.Database.EnsureCreated();
+      ctx.Database.EnsureCreated();
   <br>
-  //}
+  }
 * Then when running the project, the local database (for the PetShop DB) will be created (code first), after the database is created, the above lines can be deleted
 
 ### Executing Program
